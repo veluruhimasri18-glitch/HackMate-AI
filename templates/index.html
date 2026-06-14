@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HackMate AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        /* Simple spinner animation */
+        .spinner {
+            margin: 20px auto;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #ddd;
+            border-top: 4px solid #4a00e0;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div style="
+        background:#111;
+        color:white;
+        padding:12px;
+        text-align:center;
+        font-size:22px;
+        font-weight:bold;
+    ">
+        ⚡ HackMate AI - Your Personal Hackathon Teammate
+    </div>
+
+    <!-- MAIN BOX -->
+    <div style="
+        width:85%;
+        max-width:700px;
+        margin:40px auto;
+        background:white;
+        padding:30px;
+        border-radius:18px;
+        box-shadow:0 4px 20px rgba(0,0,0,0.15);
+        text-align:center;
+    ">
+
+        <h1>🤖 HackMate AI</h1>
+        <h3>Your Personal Hackathon Assistant</h3>
+
+        <!-- ✨ WOW PITCH -->
+        <p style="font-size:18px; color:#555; margin-top:10px;">
+            ⚡ Turn your hackathon idea confusion into a complete project in 10 seconds.
+        </p>
+
+        <!-- FORM -->
+        <form method="POST">
+
+            <label>👥 Team Size:</label><br>
+            <input type="number" name="team_size" required><br><br>
+
+            <label>💻 Skills:</label><br>
+            <input type="text" name="skills"
+                   placeholder="Python, Java, SQL, AI" required><br><br>
+
+            <label>🎯 Hackathon Theme:</label><br>
+            <input type="text" name="theme"
+                   placeholder="Education, Healthcare, Agriculture..." required><br><br>
+
+            <label>⏳ Hackathon Duration (hours):</label><br>
+            <input type="number" name="duration"
+                   placeholder="24 or 48" required><br><br>
+
+            <label>📚 Experience Level:</label><br>
+            <select name="experience">
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+            </select>
+            <br><br>
+
+            <label>🎖️ Goal:</label><br>
+            <select name="goal">
+                <option value="Win with innovation">🏆 Win with innovation</option>
+                <option value="Build MVP quickly">⚡ Build MVP quickly</option>
+                <option value="Social impact">🌍 Social impact</option>
+            </select>
+            <br><br>
+
+            <button type="submit">🚀 Generate Hackathon Plan</button>
+
+        </form>
+
+        <!-- 🔥 WOW MOMENT (AI THINKING ANIMATION) -->
+        <div id="loading" style="display:none; text-align:center; margin-top:30px;">
+
+            <div class="spinner"></div>
+
+            <h2>🤖 AI is thinking...</h2>
+
+            <p id="loading-text" style="color:#555;">
+                Understanding your hackathon idea...
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <p style="
+        text-align:center;
+        color:gray;
+        margin-top:20px;
+        margin-bottom:20px;
+    ">
+        Built with ❤️ for Microsoft Agents League Hackathon
+    </p>
+
+    <!-- SCRIPT -->
+    <script>
+        document.querySelector("form").addEventListener("submit", function () {
+            document.getElementById("loading").style.display = "block";
+            this.style.display = "none";
+        });
+
+        const messages = [
+            "🧠 Understanding your skills...",
+            "⚡ Generating innovative ideas...",
+            "🏗️ Designing project structure...",
+            "👥 Assigning team roles...",
+            "🚀 Finalizing your hackathon plan..."
+        ];
+
+        let index = 0;
+
+        setInterval(function () {
+            const text = document.getElementById("loading-text");
+            if (text) {
+                text.innerText = messages[index];
+                index = (index + 1) % messages.length;
+            }
+        }, 2000);
+    </script>
+
+</body>
+</html>

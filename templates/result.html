@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HackMate AI Result</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #333;
+        }
+
+        .topbar {
+            background: rgba(0,0,0,0.85);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4a00e0;
+        }
+
+        .card {
+            background: #f9f9ff;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        #plan-content {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-btn {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .regen-btn {
+            background: #2196F3;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin: 25px 0;
+            opacity: 0.8;
+        }
+
+        /* ✅ PRINT FIX (IMPORTANT) */
+        @media print {
+            .topbar,
+            button,
+            form {
+                display: none !important;
+            }
+
+            body {
+                background: white !important;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+        ⚡ HackMate AI - Your Personal Hackathon Teammate
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+
+        <h1 class="title">🤖 AI Generated Hackathon Plan</h1>
+
+        <!-- INPUT SUMMARY -->
+        <div class="card">
+            <b>👥 Team Info</b><br>
+            Team Size: {{ team_size }}<br>
+            Skills: {{ skills }}<br>
+            Theme: {{ theme }}
+        </div>
+
+        <div class="card">
+            <b>⚙️ Hackathon Details</b><br>
+            Duration: {{ duration }} hours<br>
+            Experience Level: {{ experience }}<br>
+            Goal: {{ goal }}
+        </div>
+
+        <!-- AI OUTPUT -->
+        <div class="card" id="plan-content">
+            {{ ai_output | safe }}
+        </div>
+
+        <!-- BUTTONS -->
+        <button onclick="window.print()" class="regen-btn" style="background:#ff9800;">
+            💾 Download PDF
+        </button>
+
+        <button class="copy-btn" onclick="copyPlan()">
+            📋 Copy Plan
+        </button>
+
+        <form action="/" method="POST" style="display:inline;">
+            <input type="hidden" name="team_size" value="{{ team_size }}">
+            <input type="hidden" name="skills" value="{{ skills }}">
+            <input type="hidden" name="theme" value="{{ theme }}">
+            <input type="hidden" name="duration" value="{{ duration }}">
+            <input type="hidden" name="experience" value="{{ experience }}">
+            <input type="hidden" name="goal" value="{{ goal }}">
+
+            <button type="submit" class="regen-btn">
+                🔄 Regenerate Ideas
+            </button>
+        </form>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        Built with ❤️ for Microsoft Agents League Hackathon
+    </div>
+
+    <script>
+        function copyPlan() {
+            const text = document.getElementById("plan-content").innerText;
+
+            navigator.clipboard.writeText(text)
+                .then(() => alert("✅ Copied successfully!"))
+                .catch(() => alert("❌ Copy failed"));
+        }
+    </script>
+
+</body>
+</html>
