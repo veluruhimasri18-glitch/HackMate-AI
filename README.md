@@ -71,9 +71,6 @@ GEMINI_API_KEY=your_api_key_here
 ### 🤖 AI Generated Ideas
 ![Ideas](static/screenshots/ideas.png)
 
-## 💡 Project Ideas
-![Ideas](static/screenshots/ideas.png)
-
 ## 👥 Team Roles
 ![Roles](static/screenshots/roles.png)
 
