@@ -68,11 +68,17 @@ GEMINI_API_KEY=your_api_key_here
 ### 🏠 Home Page
 ![Home](static/screenshots/home.png)
 
-### 🧾 Input Form
-![Input](static/screenshots/input.png)
-
 ### 🤖 AI Generated Ideas
-![Output](static/screenshots/output.png)
+![Ideas](static/screenshots/ideas.png)
+
+## 💡 Project Ideas
+![Ideas](static/screenshots/ideas.png)
+
+## 👥 Team Roles
+![Roles](static/screenshots/roles.png)
+
+## ⏰ Hackathon Timeline
+![Timeline](static/screenshots/timeline.png)
 
 ### 🎤 Pitch Section
 ![Pitch](static/screenshots/pitch.png)
