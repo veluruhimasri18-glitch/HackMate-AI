@@ -80,7 +80,7 @@
             opacity: 0.8;
         }
 
-        /* ✅ PRINT FIX (IMPORTANT) */
+        /* PRINT MODE */
         @media print {
             .topbar,
             button,
@@ -129,6 +129,28 @@
         <!-- AI OUTPUT -->
         <div class="card" id="plan-content">
             {{ ai_output | safe }}
+        </div>
+
+        <!-- 🖼️ IMAGE SECTION -->
+        <div class="card">
+            <b>🖼️ Screenshots / Output Images</b><br><br>
+
+            <img src="{{ url_for('static', filename='screenshots/home.png') }}"
+                 style="width:100%; max-width:600px; border-radius:10px;">
+            
+            <img src="{{ url_for('static', filename='screenshots/ideas.png') }}"
+                 style="width:100%; max-width:600px; border-radius:10px;">
+
+            <img src="{{ url_for('static', filename='screenshots/roles.png') }}"
+                 style="width:100%; max-width:600px; border-radius:10px;">
+            
+            <img src="{{ url_for('static', filename='screenshots/timeline.png') }}"
+                 style="width:100%; max-width:600px; border-radius:10px;">
+        
+            <img src="{{ url_for('static', filename='screenshots/pitch.png') }}"
+                 style="width:100%; max-width:600px; border-radius:10px;">
+
+                
         </div>
 
         <!-- BUTTONS -->
